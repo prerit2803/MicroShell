@@ -1,5 +1,5 @@
 # MicroShell
-Implemented the Unix shell. ush is a command interpreter with a syntax similar to UNIX C shell, csh.  However, it is for instructional purposes only, therefore it is much simpler.
+Implemented the Unix shell. *ush* is a command interpreter with a syntax similar to UNIX C shell, csh.  However, it is for instructional purposes only, therefore it is much simpler.
 ### Initialization and Termination
 When first  stared, ush normally  performs  commands  from  the file ̃/.ushrc, provided  that  it  is  readable. Commands in this  file are processed just the same as if they were taken from standard input.
 ### Interactive Operation
@@ -10,9 +10,11 @@ The shell splits input lines into words separated by whitespace (spaces or tabs)
 * The special characters &, |, ;, <, and > and the multi-character sequences >>, |&, >& and >>& are always separate words, whether or not they are surrounded by whitespace.
 * Special characters preceded by a backslash character (\) are not interpreted by the shell. Two backslashes together sends the backslash character to the shell; otherwise the backslash is stripped from the input.
 * Characters enclosed in double quotes (") or single quotes (’) form a single word.  Special characters inside of strings do not form separate words.
+
 ### Command Line Parsing
 A *simple  command* is a sequence of words, the first of which specifies the command to be executed.  A pipeline is a sequence of one or more simple commands separated by | or |&. With |, the standard output of the preceding command is redirected to the standard input of the command that follows.  With |&, both the standard error and the standard output are redirected through the pipeline.
 A *list* is a sequence of one or more pipelines separated by ; or &. Pipelines joined into sequences with ; will be executed sequentially. Pipelines ending with & are executed asynchronously. In which case, the shell does not wait for the pipeline to  finish; instead, it displays the job number and associated process ID, and begins processing the subsequent pipelines (prompting if necessary).
+
 ### I/O Redirection
 The following separators indicate that the subsequent word is the name of a file to which the command’s standard input, standard output, or standard error is redirected.
 * < Redirect the standard input.
