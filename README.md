@@ -26,7 +26,9 @@ error to the file.
 
 ### Command Execution
 If the command is an ush shell built-in, the shell executes it directly. Otherwise, the shell searches for a file by that name with execute access. If the command-name contains a /, the shell takes it as a pathname and searches for it. If a pathname begins with a /, then the path is absolute; otherwise, the path is relative to the current working directory. If the command-name does not contain a /, the shell attempts to resolve it to a pathname, searching each directory in the PATH variable for the command.
+
 When a file, with its pathname resolved, is found that has proper execute permission, the shell forks a new process to run the command. The shell also passes along any arguments to the command. Using one of the flavor of exec system call, such as execv(2V), the newly forked process attempts to overlay the desired program.  If successful, the shell is silent.
+
 If the file does not have execute permissions, or if the pathname matches a directory, a ‘‘permission denied’’ message is displayed. If the pathname cannot be resolved a ‘‘command not found’’ message is displayed. If either of these errors occurs with any component of a pipeline the entire pipeline is aborted, even though some of the pipeline may already be executing.
 ### Environment Variables
 Environment variables may be accessed via the *setenv* built-in commands. When a program is exec’d the environment variables are passed as parameters to execv or equivalent.
